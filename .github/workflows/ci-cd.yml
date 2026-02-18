@@ -77,9 +77,9 @@ jobs:
         run: |
           IMAGE_NAME=ghcr.io/${{ github.repository }}/fastapi-gitops-starter
           if [ "${{ github.event_name }}" = "release" ]; then
-            docker build -t $IMAGE_NAME:${{ steps.get_version.outputs.version }} -t $IMAGE_NAME:latest .
+            docker build -f docker/Dockerfile -t $IMAGE_NAME:${{ steps.get_version.outputs.version }} -t $IMAGE_NAME:latest .
           else
-            docker build -t $IMAGE_NAME:latest .
+            docker build -f docker/Dockerfile -t $IMAGE_NAME:latest .
           fi
       - name: Push Docker image (release)
         if: github.event_name == 'release'
