@@ -48,10 +48,7 @@ jobs:
           pip install pytest pytest-cov
       - name: Run tests with coverage
         run: |
-          pytest --cov=app --cov-report=xml
-      - name: Check coverage
-        run: |
-          coverage report --fail-under=80 --show-missing
+          pytest --cov=app --cov-report=xml --cov-fail-under=80
 
   build:
     name: Build Docker Image
