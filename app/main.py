@@ -39,6 +39,12 @@ async def list_items():
     }
 
 
+@app.post("/api/items")
+async def create_item(name: str, description: str):
+    """Create a new item."""
+    return {"id": 999, "name": name, "description": description, "created": True}
+
+
 @app.get("/api/items/{item_id}")
 async def get_item(item_id: int):
     """Example endpoint to get a specific item by ID."""
